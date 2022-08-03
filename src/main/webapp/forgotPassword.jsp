@@ -71,11 +71,16 @@ body {
 				<form class="card mt-4" action="forgotPassword" method="POST">
 					<div class="card-body">
 						<div class="form-group">
-							<label for="email-for-pass">Enter your email address</label> <input
+							<label	for="email-for-pass">Enter your Name</label> 
+							<input
+								class="form-control" type="text" name="name"
+								id="email-for-pass" required>
+							<label for="email-for-pass">Enter your email address</label> 
+							<input
 								class="form-control" type="text" name="email"
 								id="email-for-pass" required><small
 								class="form-text text-muted">Enter the registered email
-								address . Then we'll email a OTP to this address.</small>
+								address . Then we'll email a OTP to this address.</small> 
 						</div>
 					</div>
 					<div class="card-footer">

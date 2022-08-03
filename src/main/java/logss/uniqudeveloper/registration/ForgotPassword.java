@@ -30,7 +30,7 @@ public class ForgotPassword extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		RequestDispatcher dispatcher = null;
 		int otpvalue = 0;
@@ -62,7 +62,7 @@ public class ForgotPassword extends HttpServlet {
 				message.setFrom(new InternetAddress(email));// change accordingly
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 				message.setSubject("OTP SERVICE");
-				message.setContent("<h3>Dear Valued User,</h3>\r\n"
+				message.setContent("<h3>Dear Valued "+name+",</h3>\r\n"
 						+ "\r\n"
 						+ "Your One-Time Password for your Request you are attempting to is <b>"+otpvalue+"</b>. Please use this password within next 10 minutes to complete your Processing\r\n"
 						+ "\r\n"
