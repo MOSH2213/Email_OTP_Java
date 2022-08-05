@@ -32,6 +32,9 @@ public class ForgotPassword extends HttpServlet {
 			throws ServletException, IOException {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
+		
+		html ht = new html();
+		
 		RequestDispatcher dispatcher = null;
 		int otpvalue = 0;
 		HttpSession mySession = request.getSession();
@@ -62,6 +65,9 @@ public class ForgotPassword extends HttpServlet {
 				message.setFrom(new InternetAddress(email));// change accordingly
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 				message.setSubject("OTP SERVICE");
+				//the below generates the html email body that is created in the html.jaava class 
+				//message.setContent(ht.getHtml(),"text/html");
+				
 				message.setContent("<h3>Dear Valued "+name+",</h3>\r\n"
 						+ "\r\n"
 						+ "Your One-Time Password for your Request you are attempting to is <b>"+otpvalue+"</b>. Please use this password within next 10 minutes to complete your Processing\r\n"
@@ -78,7 +84,7 @@ public class ForgotPassword extends HttpServlet {
 				Transport.send(message);
 				System.out.println("message sent successfully");
 			}
-
+			
 			catch (MessagingException e) {
 				throw new RuntimeException(e);
 			}
